@@ -3,7 +3,7 @@ import Weight from './weight';
 
 export default function Choices(){
     const [choiceValue, setChoiceValue] = useState(0.4);
-    const multiplier ={"Average Risk":0.4, ESRD:0.2, Obese:0.5, "Type 1 DM": 0.2}
+    const multiplier ={"Normal weight":0.4, ESRD:0.2, Obese:0.5, "Type 1 DM": 0.2}
     const handleChangeValue = ({target})=>{
         let y =target.value;
         setChoiceValue(y);
