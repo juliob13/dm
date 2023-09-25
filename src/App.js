@@ -1,7 +1,7 @@
 
 import './App.css';
 import Choices from './Choices';
-import Weight from './weight';
+
 function App() {
   return (
     <div >

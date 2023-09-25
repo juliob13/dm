@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Weight from './weight';
+
 
 export default function Choices(){
     const [choiceValue, setChoiceValue] = useState(0.4);
