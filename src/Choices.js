@@ -43,11 +43,11 @@ export default function Choices(){
   
     return (
         <div>
-            <label>What is your risk?</label>
+            <label>What is your insulin resistance?</label>
                    {list}
             
                 <div>
-            <label for="weight" >Enter weight in <button value='kg' onClick={handleClick}>kg</button> <button value='pounds' onClick={handleClick}>pounds</button>: </label>
+            <label for="weight" >Enter weight in <button value='kg' onClick={handleClick}>kg</button> or <button value='pounds' onClick={handleClick}>pounds</button>: </label>
             <
             input type="number" min= '0' name="weight" value={weight} onChange={handleChange} 
             />
