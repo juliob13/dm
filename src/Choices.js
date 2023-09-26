@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
+import Results from './Results';
 
 export default function Choices(){
     const [choiceValue, setChoiceValue] = useState(0.4);
-    const multiplier ={"Average Risk":0.4, ESRD:0.2, Obese:0.5, "Type 1 DM": 0.2}
+    const [scale, setScale] = useState(['kg']);
+    const [total, setTotal] = useState(0)
+    const multiplier ={"Normal weight":0.4, ESRD:0.2, Obese:0.5, "Type 1 DM": 0.2};
+
     const handleChangeValue = ({target})=>{
         let y =target.value;
         setChoiceValue(y);
@@ -20,12 +23,23 @@ export default function Choices(){
         setWeight(newWeight);
        }
     }
-    let total = Math.floor(weight*choiceValue)
+
+    const handleClick = ({target})=>{
+        let previous = scale
+        if (previous!== target.value){
+             setScale(target.value)
+             
+    }
+}
     
+    useEffect(()=>{
+     
+         setTotal(choiceValue*weight)
+
+    }, [choiceValue, weight])
   
     
-    
-        
+
   
     return (
         <div>
@@ -33,15 +47,12 @@ export default function Choices(){
                    {list}
             
                 <div>
-            <label for="weight" >Enter weight in kg: </label>
+            <label for="weight" >Enter weight in <button value='kg' onClick={handleClick}>kg</button> <button value='pounds' onClick={handleClick}>pounds</button>: </label>
             <
             input type="number" min= '0' name="weight" value={weight} onChange={handleChange} 
             />
-            <div style = {(!weight?{visibility:'hidden'}: {visibility:'visible'})}>
-                <p id='response'>The total insulin is {total}</p>
+            <Results total={total} scale={scale}/>
             
-                {<p style={{backgroundColor:'white'} }>The split dose is {Math.floor(total/2)} units of long acting and {Math.floor(total/6)} units prandial</p>}
-            </div>
         </div>
             
         </div>
